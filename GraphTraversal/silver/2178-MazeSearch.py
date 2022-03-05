@@ -19,7 +19,7 @@ def bfs():
     # visited = [[False for _ in range(M)]]*N  # 모든 n번째 리스트의 0번째 값 동일 주소
     # visited = [[False]*M for _ in range(N)] # 각 값 주소 다름
     visited = [[False for _ in range(M)] for _ in range(N)]  # 각 값 주소 다름
-    visited[0][0] = 100000
+    visited[0][0] = 1
 
     deq = deque()
     deq.append((0, 0))

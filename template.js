@@ -4,7 +4,7 @@ function solve() {
   }
   
   const filePath =
-    process.platform === "linux" ? "/dev/stdin" : "../../testcase.txt";
+    process.platform === "linux" ? "/dev/stdin" : "/Users/seogjun-yeong/Desktop/Programming/CodingTest/testcase.txt";
   const input = require("fs")
     .readFileSync(filePath)
     .toString()

@@ -2,7 +2,11 @@
 <p align="center"><img 
 src="https://d2gd6pc034wcta.cloudfront.net/images/logo@2x.png" alt="baekjoon" style="max-height: 300px"/></p>
 
-<p align="center"><img src="https://programmers.co.kr/assets/img-meta-programmers-e00862a7c9acd8ef5164f8c85b3ab0127d083ab59b3a98d7219690bd3570bf35.png" alt="programmers" style="max-height: 300px;max-width: 551px;"/></p>
+<p align="center">
+    <p style="max-width: 551px;">
+        <img src="https://programmers.co.kr/assets/img-meta-programmers-e00862a7c9acd8ef5164f8c85b3ab0127d083ab59b3a98d7219690bd3570bf35.png" alt="programmers" style="max-height: 300px;"/>
+    </p>
+</p>
 
 ### 설명
 

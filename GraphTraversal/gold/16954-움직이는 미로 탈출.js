@@ -61,6 +61,7 @@ function solve(space){
 }
 console.log(solve(space))
 
+
 // 00:39:57 맞았습니다!(120ms) -> isVisited 로직 살림
 // 00:42:29 틀렸습니다. -> 롤백, Queue 생성
 // 00:47:19 맞았습니다(124ms) -> queue initial 로직 변경

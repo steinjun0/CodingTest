@@ -5,10 +5,10 @@ const [N, ...numbers] = require('fs').readFileSync(process.platform === 'linux' 
     .map(Number)
 
 class AbsHeap{
-    constructor(){
+    constructor(comp){
         this.arr = [null]
+        this.comp = comp
     }
-
     swap(a,b){
         [this.arr[a],this.arr[b]] = [this.arr[b],this.arr[a]]
     }
@@ -17,10 +17,9 @@ class AbsHeap{
         this.upsort(this.arr.length-1)
     }
     upsort(index){
-        if(index > 1 && 
-            (   (Math.abs(this.arr[~~(index/2)]) > Math.abs(this.arr[index])) || 
-                (Math.abs(this.arr[~~(index/2)]) === Math.abs(this.arr[index]) && this.arr[~~(index/2)] > this.arr[index])
-            )){
+        const current = this.arr[index]
+        const parent = this.arr[~~(index/2)]
+        if(index > 1 && this.comp(current, parent)){
             this.swap(index,~~(index/2))
             this.upsort(~~(index/2))
         }
@@ -38,47 +37,33 @@ class AbsHeap{
         }
     }
     downsort(index){
-        const current = Math.abs(this.arr[index])
-        const left = Math.abs(this.arr[index*2])
-        const right = Math.abs(this.arr[index*2+1])
-        if(current>=left && current>=right){
-            if(left < right){
-                this.swap(index, index*2)
-                this.downsort(index*2)
-            }else if(left > right){
-                this.swap(index, index*2+1)
-                this.downsort(index*2+1)
-            }else if(left === right){
-                if(this.arr[index*2] < this.arr[index*2+1]){
-                    if(current > left){
-                        this.swap(index, index*2)
-                        this.downsort(index*2)
-                    }
-                }else{
-                    if(current > right){
-                        this.swap(index, index*2+1)
-                        this.downsort(index*2+1)
-                    }
-                }
-            }
-            
-        }else if(
-            current>left || 
-            ((current ===left) && (this.arr[index] > this.arr[index*2]))
-        ){
-            this.swap(index, index*2)
+        const current = this.arr[index]
+        const left = this.arr[index*2]
+        const right = this.arr[index*2+1]
+        if(this.comp(left,right) && this.comp(left,current)){
+            this.swap(index,index*2)
             this.downsort(index*2)
-        }else if(
-            current>right || 
-            (current === right && (this.arr[index] > this.arr[index*2+1]))
-        ){
-            this.swap(index, index*2+1)
+        }else if(this.comp(right,left) && this.comp(right,current)){
+            this.swap(index,index*2+1)
             this.downsort(index*2+1)
         }
     }
 }
 
-const heap = new AbsHeap()
+const heap = new AbsHeap(
+    (a,b)=>{
+        if(a===undefined) return false
+        if(b===undefined) return true
+        if(Math.abs(a) < Math.abs(b)){
+            return true
+        }else if(Math.abs(a) > Math.abs(b)){
+            return false
+        }else{
+            if(b<a)return false
+            else return true
+        }
+    }
+)
 const result = []
 for(const num of numbers){
     if(num === 0){

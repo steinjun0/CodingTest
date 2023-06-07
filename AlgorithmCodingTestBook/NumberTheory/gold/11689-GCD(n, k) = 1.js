@@ -41,3 +41,4 @@ console.log(numbers[N])
 // }
 // console.log(count)
 // 00:21:47 invalid range error -> 
+// 00:55:18 포기

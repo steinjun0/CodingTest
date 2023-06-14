@@ -62,7 +62,6 @@ function solution(input){
         const b=operation[2]
         if(operation[0] === '0') union(a,b)
         else if(operation[0] === '1') result.push(find(a,b))
-        // console.log(operation,arr)
     }
     console.log(result.join('\n'))
 }

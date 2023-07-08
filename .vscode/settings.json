@@ -34,5 +34,12 @@
     "editor.suggest.showVariables": false,
     "editor.suggest.showWords": false,
     "editor.suggest.showClasses": false,
-    "editor.suggest.showColors": false
+    "editor.suggest.showColors": false,
+    "github.copilot.enable": {
+
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false
+    }
 }

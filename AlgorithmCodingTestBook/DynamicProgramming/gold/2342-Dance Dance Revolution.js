@@ -6,7 +6,43 @@ const sequence = require('fs').readFileSync(process.platform === 'linux' ? '/dev
 // sequence.length = sequence.length-1
 sequence.reverse()
 
-const queue = [[0,0,0],'*']
+class Queue{
+    constructor(){
+        this.arr = []
+        this.head = 0
+        this.tail = 0
+    }
+
+    push(...value){
+        this.arr.push(...value)
+        this.tail+=value.length
+    }
+
+    pop(){
+        if(this.head===this.tail) return null
+        this.tail-=1
+        return this.arr.pop()
+    }
+
+    shift(){
+        if(this.head===this.tail) return null
+        return this.arr[this.head++]
+    }
+
+    get length(){
+        return this.tail-this.head
+    }
+
+    [Symbol.iterator] = function *(){
+        while(this.length > 0){
+            yield this.shift()
+        }
+    }
+}
+
+// const queue = [[0,0,0],'*']
+const queue = new Queue()
+queue.push(...[[0,0,0],'*'])
 
 function getCost(a,b){
     if(a === b) return 1
